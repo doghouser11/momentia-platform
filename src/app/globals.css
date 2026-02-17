@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap');
+@import '../styles/templates.css';
+@import '../styles/event-template.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  .font-elegant {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-momentia-500 hover:bg-momentia-600 text-white font-medium py-2 px-6 rounded-full transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-momentia-600 font-medium py-2 px-6 rounded-full border border-momentia-200 transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100 p-6;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-momentia-50 via-white to-accent-50;
+  }
+}

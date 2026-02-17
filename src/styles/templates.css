@@ -1,0 +1,390 @@
+/* Momentia Template Styles - Based on Design Analysis */
+
+/* 1. CLASSIC ELEGANT Template */
+.template-classic-elegant {
+  --primary-color: #F8F6F0;
+  --secondary-color: #D4AF37;
+  --accent-color: #8B7355;
+  --text-color: #2C2C2C;
+  --font-family: 'Playfair Display', serif;
+  --font-weight-normal: 300;
+  --font-weight-bold: 500;
+  --letter-spacing: 0.5px;
+  --line-height: 1.6;
+  --padding-large: 80px;
+  --padding-medium: 40px;
+  --gap-large: 60px;
+  --gap-medium: 40px;
+}
+
+.template-classic-elegant .hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #FEFCF7 100%);
+  padding: var(--padding-large) var(--padding-medium);
+  text-align: center;
+}
+
+.template-classic-elegant .title {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--text-color);
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: var(--gap-medium);
+}
+
+.template-classic-elegant .subtitle {
+  font-size: 1.25rem;
+  color: var(--accent-color);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+  margin-bottom: var(--gap-large);
+}
+
+.template-classic-elegant .rsvp-button {
+  background: var(--secondary-color);
+  color: white;
+  padding: 16px 48px;
+  border: none;
+  border-radius: 2px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+}
+
+.template-classic-elegant .rsvp-button:hover {
+  background: #C19B2C;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+/* 2. BAROQUE LUXURY Template */
+.template-baroque-luxury {
+  --primary-color: #8B0000;
+  --secondary-color: #FFD700;
+  --accent-color: #2F1B14;
+  --text-color: #1A1A1A;
+  --font-family: 'Bodoni MT', serif;
+  --ornament-border: 3px solid var(--secondary-color);
+  --shadow-luxury: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.template-baroque-luxury {
+  background: linear-gradient(45deg, #1A0000 0%, var(--primary-color) 100%);
+  min-height: 100vh;
+}
+
+.template-baroque-luxury .hero {
+  background: var(--primary-color);
+  color: white;
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  border: var(--ornament-border);
+  margin: 20px;
+  box-shadow: var(--shadow-luxury);
+}
+
+.template-baroque-luxury .hero::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid var(--secondary-color);
+  pointer-events: none;
+}
+
+.template-baroque-luxury .title {
+  font-family: var(--font-family);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--secondary-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 40px;
+}
+
+.template-baroque-luxury .ornament {
+  width: 80px;
+  height: 4px;
+  background: var(--secondary-color);
+  margin: 30px auto;
+  position: relative;
+}
+
+.template-baroque-luxury .ornament::before,
+.template-baroque-luxury .ornament::after {
+  content: '◆';
+  position: absolute;
+  color: var(--secondary-color);
+  font-size: 20px;
+  top: -12px;
+}
+
+.template-baroque-luxury .ornament::before { left: -15px; }
+.template-baroque-luxury .ornament::after { right: -15px; }
+
+/* 3. MINIMALIST MODERN Template */
+.template-minimalist-modern {
+  --primary-color: #FFFFFF;
+  --secondary-color: #2C3E50;
+  --accent-color: #95A5A6;
+  --text-color: #1A1A1A;
+  --font-family: 'Inter', sans-serif;
+  --spacing-xl: 120px;
+  --spacing-lg: 80px;
+  --spacing-md: 40px;
+}
+
+.template-minimalist-modern {
+  background: var(--primary-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+.template-minimalist-modern .hero {
+  padding: var(--spacing-xl) 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.template-minimalist-modern .title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-lg);
+  color: var(--secondary-color);
+}
+
+.template-minimalist-modern .date {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-lg);
+  border-left: 2px solid var(--secondary-color);
+  padding-left: 20px;
+  display: inline-block;
+}
+
+.template-minimalist-modern .rsvp-button {
+  background: var(--secondary-color);
+  color: white;
+  padding: 20px 60px;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.template-minimalist-modern .rsvp-button:hover {
+  background: #34495E;
+}
+
+/* 4. RUSTIC WARMTH Template */
+.template-rustic-warmth {
+  --primary-color: #8FBC8F;
+  --secondary-color: #DEB887;
+  --accent-color: #F5DEB3;
+  --text-color: #3E2723;
+  --font-family: 'Lora', serif;
+  --texture-overlay: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgba(245,222,179,0.1)"/></svg>');
+}
+
+.template-rustic-warmth {
+  background: var(--accent-color);
+  background-image: var(--texture-overlay);
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.template-rustic-warmth .hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  padding: 80px 40px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 20px;
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.template-rustic-warmth .title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.template-rustic-warmth .subtitle {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #5D4037;
+  margin-bottom: 40px;
+}
+
+.template-rustic-warmth .branch-decoration {
+  width: 120px;
+  height: 20px;
+  background: var(--text-color);
+  margin: 30px auto;
+  border-radius: 10px;
+  position: relative;
+  opacity: 0.3;
+}
+
+/* 5. FESTIVE CELEBRATION Template */
+.template-festive-celebration {
+  --primary-color: #FF6B9D;
+  --secondary-color: #A8E6CF;
+  --accent-color: #FFD93D;
+  --text-color: #2D2D2D;
+  --font-family: 'Poppins', sans-serif;
+}
+
+.template-festive-celebration {
+  background: linear-gradient(45deg, var(--secondary-color), var(--accent-color), var(--primary-color));
+  background-size: 400% 400%;
+  animation: festiveGradient 8s ease infinite;
+  font-family: var(--font-family);
+}
+
+@keyframes festiveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.template-festive-celebration .hero {
+  padding: 80px 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  margin: 30px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.template-festive-celebration .title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.template-festive-celebration .rsvp-button {
+  background: var(--primary-color);
+  color: white;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.template-festive-celebration .rsvp-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+}
+
+/* 6. KIDS WONDERLAND Template */
+.template-kids-wonderland {
+  --primary-color: #FF9FF3;
+  --secondary-color: #54A0FF;
+  --accent-color: #5F27CD;
+  --text-color: #2C2C54;
+  --font-family: 'Fredoka One', sans-serif;
+  --safe-radius: 20px;
+  --safe-padding: 24px;
+}
+
+.template-kids-wonderland {
+  background: linear-gradient(135deg, #FFE4F7 0%, #E4F2FF 100%);
+  font-family: var(--font-family);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+.template-kids-wonderland .hero {
+  padding: 60px var(--safe-padding);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--safe-radius);
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.template-kids-wonderland .hero::before {
+  content: '🎈🌟🎨';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.template-kids-wonderland .title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.template-kids-wonderland .subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 40px;
+}
+
+.template-kids-wonderland .fun-shape {
+  width: 60px;
+  height: 60px;
+  background: var(--accent-color);
+  border-radius: 50% 20% 50% 20%;
+  margin: 20px auto;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.template-kids-wonderland .rsvp-button {
+  background: var(--secondary-color);
+  color: white;
+  padding: 20px 30px;
+  border: none;
+  border-radius: var(--safe-radius);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(84, 160, 255, 0.3);
+}
+
+.template-kids-wonderland .rsvp-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(84, 160, 255, 0.4);
+}

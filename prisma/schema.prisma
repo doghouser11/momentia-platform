@@ -1,0 +1,173 @@
+// Momentia Database Schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Users and Subscriptions
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  password    String
+  name        String?
+  phone       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Subscription data
+  subscription Subscription?
+  events       Event[]
+  
+  @@map("users")
+}
+
+model Subscription {
+  id              String            @id @default(cuid())
+  userId          String            @unique
+  user            User              @relation(fields: [userId], references: [id])
+  
+  plan            String           // BEGINNER, PREMIUM, PROFESSIONAL
+  status          String           // ACTIVE, EXPIRED, CANCELLED
+  
+  // Payment tracking
+  stripeCustomerId     String?
+  myPOSCustomerId      String?
+  stripeSubscriptionId String?
+  
+  // Event quotas
+  totalSites      Int              // 2, 3, or 5 based on plan
+  usedSites       Int              @default(0)
+  
+  // Dates
+  startsAt        DateTime
+  expiresAt       DateTime
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  @@map("subscriptions")
+}
+
+// Events (the actual wedding/birthday sites)
+model Event {
+  id          String      @id @default(cuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  
+  // Event basics
+  title       String
+  description String?
+  eventDate   DateTime
+  location    String?
+  mapLink     String?
+  
+  // Site generation
+  subdomain   String      @unique  // petya-i-ivan
+  qrCode      String?     // Base64 or URL to QR code image
+  template    String      // classic-elegant, rustic-warmth, etc
+  
+  // Content
+  coverPhoto  String?
+  gallery     EventPhoto[]
+  story       String?     // Personal story/message
+  
+  // Features
+  liveGalleryEnabled Boolean @default(false)
+  liveGalleryExpires DateTime?
+  
+  // Status tracking
+  status      String      // PENDING, DELIVERED, EXPIRED
+  deliveredAt DateTime?   // When admin marked as delivered
+  
+  // RSVP data
+  guests      Guest[]
+  
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  @@map("events")
+}
+
+model EventPhoto {
+  id        String   @id @default(cuid())
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id])
+  
+  filename  String
+  url       String
+  caption   String?
+  
+  // Live gallery tracking
+  uploadedBy String? // Guest name or "host"
+  isLive     Boolean @default(false)
+  
+  createdAt DateTime @default(now())
+  
+  @@map("event_photos")
+}
+
+// RSVP System
+model Guest {
+  id           String      @id @default(cuid())
+  eventId      String
+  event        Event       @relation(fields: [eventId], references: [id])
+  
+  // Guest info
+  name         String
+  email        String?
+  phone        String?
+  
+  // RSVP status
+  status       String      @default("NO_RESPONSE") // COMING, MAYBE, NOT_COMING, NO_RESPONSE
+  plusOnes     Int         @default(0)
+  
+  // Special requirements
+  dietaryNotes String?
+  message      String?     // Message in digital guest book
+  
+  // Tracking
+  invitedAt    DateTime?
+  respondedAt  DateTime?
+  reminderSent DateTime?
+  
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  
+  @@map("guests")
+}
+
+// Admin tracking
+model Order {
+  id          String      @id @default(cuid())
+  userId      String
+  
+  // Client data for admin
+  clientName  String
+  clientEmail String
+  planType    String
+  amount      Decimal
+  
+  // Processing
+  status      String      @default("PENDING") // PENDING, DELIVERED, CANCELLED
+  adminNotes  String?
+  
+  // Deadlines
+  deadline    DateTime    // When to deliver
+  deliveredAt DateTime?
+  
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  @@map("orders")
+}
+
+// Note: Using String instead of enums for SQLite compatibility
+// Valid values:
+// SubscriptionPlan: "BEGINNER", "PREMIUM", "PROFESSIONAL" 
+// SubscriptionStatus: "ACTIVE", "EXPIRED", "CANCELLED"
+// EventStatus: "PENDING", "DELIVERED", "EXPIRED"
+// RSVPStatus: "COMING", "MAYBE", "NOT_COMING", "NO_RESPONSE"  
+// OrderStatus: "PENDING", "DELIVERED", "CANCELLED"
